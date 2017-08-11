@@ -1,0 +1,50 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<!-- 数据库方言,目的是：告诉hibernate框架，我们现在操作的是mysql库 -->
+		<property name="dialect">
+			org.hibernate.dialect.MySQLDialect
+		</property>
+		
+		<!-- 配置JDBC连接时，必须的4个内容-->
+		<property name="connection.driver_class">
+			com.mysql.jdbc.Driver
+		</property>
+		
+		<property name="connection.url">
+			jdbc:mysql://localhost:3306/kaoshi1?useUnicode=true&amp;characterEncoding=UTF-8
+		</property>
+		
+		<property name="connection.username">
+			root
+		</property>
+		
+		<property name="connection.password">
+			zhu5201314.
+		</property>
+	
+		<!-- 配置C3P0连接池 -->
+		<!-- 指定hibernate连接提供类 -->
+		<property name="hibernate.connection.provider_class">
+			org.hibernate.c3p0.internal.C3P0ConnectionProvider
+		</property>
+		<!-- 连接池中的最大连接数量 -->
+		<property name="hibernate.c3p0.max_size">50</property>
+		<!-- 连接池中的最小连接数量 -->
+		<property name="hibernate.c3p0.min_size">1</property>
+		<property name="hibernate.c3p0.timeout">10000</property>
+		<property name="hibernate.c3p0.max_statements">200</property>
+		<property name="hibernate.c3p0.acquire_increment">5</property>
+		
+		<!-- 要求hibernate将拼接好的SQL语句在控制台输出 -->
+		<property name="show_sql">true</property>
+		<!-- 要求严格按照SQL语法来进行显示 -->
+		<property name="format_sql">true</property>
+		
+		<!-- 使用mapping添加orm映射文件 -->
+		<mapping resource="org/TestSpringhibernate/work811/xmls/StudentBean.xml"/>
+	</session-factory>
+</hibernate-configuration>
